@@ -7,7 +7,7 @@ sudo dpkg -i /opt/linux-headers*.deb
 ```
 Then clone repo
 ```
-git clone git@github.com:rikovalkonen/st7796s.git
+git clone https://github.com/rikovalkonen/st7796s.git
 cd st7796s/kernel_module/
 ```
 Build kernel module and install it
