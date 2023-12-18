@@ -1,0 +1,54 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "allwinner,sun50i-h616";
+
+	fragment@0 {
+		target = <&spi1>;
+		__overlay__ {
+			num-cs = <2>;
+			/* CS0 PA10  CS1 PA13 */
+            cs-gpios = <&pio 7 5 0>,<&pio 7 9 0>; /*PH5=CS0 PH9=CS1*/
+			status = "okay";
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			st7789v: st7789v@0{
+				compatible = "sitronix,st7796s";
+				/* CS 0 */
+                reg = <0>;
+				spi-max-frequency = <1000000>;
+				rotation = <90>;
+				fps = <30>;
+				buswidth = <8>;
+				reset-gpios = <&pio 8 3 1>; /* PI3 */
+				dc-gpios = <&pio 7 4 0>; /* PH4 */
+				debug = <1>;
+			};
+
+			ads7846: ads7846@0 {
+				compatible = "ti,ads7846";
+				/* CS1 */
+                reg = <1>; 
+				status = "okay";
+				spi-max-frequency = <1600000>;
+				interrupt-parent = <&pio>;
+                interrupts = <0 1 2>; /* PA1 IRQ_TYPE_EDGE_FALLING */
+                pendown-gpio = <&pio 0 1 0>; /* PA1 */
+
+				/* driver defaults, optional */
+				ti,x-min = /bits/ 16 <0>;
+				ti,y-min = /bits/ 16 <0>;
+				ti,x-max = /bits/ 16 <0x0FFF>;
+				ti,y-max = /bits/ 16 <0x0FFF>;
+				ti,pressure-min = /bits/ 16 <0>;
+				ti,pressure-max = /bits/ 16 <0xFFFF>;
+				ti,x-plate-ohms = /bits/ 16 <400>;
+		};
+
+		};
+	};
+
+
+};
