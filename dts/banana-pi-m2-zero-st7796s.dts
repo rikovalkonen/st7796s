@@ -20,7 +20,7 @@ BEEPER		PL2
 		target-path = "/aliases";
 
 		__overlay__ {
-			spi1 = "/soc/spi@1c69000";
+			spi1 = "/soc/spi@1c68000";
 		};
 	};
 
@@ -47,7 +47,7 @@ BEEPER		PL2
 / {
 
     fragment@1 {
-	target-path = "/soc/spi@1c69000";
+	target-path = "/soc/spi@1c68000";
 	__overlay__ {
 	    num-cs = <2>;  
 	    status = "okay";
@@ -69,7 +69,7 @@ BEEPER		PL2
     };
 
     fragment@1 {
-	target-path = "/soc/spi@1c69000";
+	target-path = "/soc/spi@1c68000";
 	__overlay__ {
 		#address-cells = <1>;
 		#size-cells = <0>;
