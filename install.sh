@@ -12,6 +12,13 @@ orangepi_zero_2_w() {
     return $?
 }
 
+if banana_pi_m2_zero; then 
+if orangepi_zero_2_w; then
+else 
+    echo "Your device is not yet supported, please submit support ticket."
+    exit 1
+fi
+
 if orangepi_zero_2_w; then 
     echo "Installing kernel headers..."
     sudo dpkg -i /opt/linux-headers*.deb
