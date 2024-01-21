@@ -72,8 +72,7 @@ if [ "$answer" = "y" ]; then
             Identifier  \"myfb\"
             Driver      \"fbdev\"
             Option      \"fbdev\" \"/dev/$framebuffer\"
-
-            Option          \"SwapbuffersWait\" \"true\"
+            Option      \"SwapbuffersWait\" \"true\"
             EndSection"
 
             sudo sh -c "echo '$content' > /etc/X11/xorg.conf.d/99-fbdev.conf"
