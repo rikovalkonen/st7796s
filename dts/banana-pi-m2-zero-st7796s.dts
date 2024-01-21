@@ -2,16 +2,14 @@
 /plugin/;
 
 / {
-    /*compatible = "allwinner,sun8i-h3";*/
+    compatible = "allwinner,sun8i-h3";
 
 	fragment@0 {
 		target = <&spi0>;
 		__overlay__ {
-			//num-cs = <1>;
-			num-chipselects = <1>;
-			cs-gpios = <&pio 2 3 0>; /* C-03  = SPI0_CS*/
-			// cs-gpios = <&pio 2 3 0>, /* C-03  = SPI0_CS*/
-			// 		   <&pio 0 6 0>; /* MAYBE A-13 = SPI1_CS*/
+			num-chipselects = <2>;
+			cs-gpios = <&pio 2 3 0>, /* C3  = SPI0_CS*/
+					   <&pio 2 7 0>; /* C7 = SPI1_CS*/
 			status = "okay";
 			#address-cells = <1>;
 			#size-cells = <0>;
@@ -21,31 +19,31 @@
 				reg = <0>;
 				spi-max-frequency = <16000000>;
 				rotate = <0>;
-				fps = <30>;
+				fps = <60>;
 				buswidth = <8>;
-				reset-gpios = <&pio 0 7 1>; /* A-07 */
+				reset-gpios = <&pio 0 7 1>; /* A7 */
 				dc-gpios = <&pio 2 4 0>; /* C4 */
 				debug = <1>;
 			};
 
-		// 	ads7846: ads7846@0 {
-		// 		compatible = "ti,ads7846";
-		// 		reg = <1>; 
-		// 		status = "okay";
-		// 		spi-max-frequency = <1000000>;
-		// 		interrupt-parent = <&pio>;
-		// 		interrupts = <0 3 2>; /* PA3 IRQ_TYPE_EDGE_FALLING */
-		// 		pendown-gpio = <&pio 0 3 0>; /* PA3 */
+			ads7846: ads7846@0 {
+				compatible = "ti,ads7846";
+				reg = <1>; 
+				status = "okay";
+				spi-max-frequency = <1000000>;
+				interrupt-parent = <&pio>;
+				interrupts = <0 20 2>;
+				pendown-gpio = <&pio 0 20 0>; /* A20 */
 
-		// 		/* driver defaults, optional */
-		// 		ti,x-min = /bits/ 16 <0>;
-		// 		ti,y-min = /bits/ 16 <0>;
-		// 		ti,x-max = /bits/ 16 <0x0FFF>;
-		// 		ti,y-max = /bits/ 16 <0x0FFF>;
-		// 		ti,pressure-min = /bits/ 16 <0>;
-		// 		ti,pressure-max = /bits/ 16 <0xFFFF>;
-		// 		ti,x-plate-ohms = /bits/ 16 <400>;
-		// };
+				/* driver defaults, optional */
+				ti,x-min = /bits/ 16 <0>;
+				ti,y-min = /bits/ 16 <0>;
+				ti,x-max = /bits/ 16 <0x0FFF>;
+				ti,y-max = /bits/ 16 <0x0FFF>;
+				ti,pressure-min = /bits/ 16 <0>;
+				ti,pressure-max = /bits/ 16 <0xFFFF>;
+				ti,x-plate-ohms = /bits/ 16 <400>;
+		};
 
 		};
 	};
