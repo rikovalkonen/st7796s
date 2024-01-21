@@ -1,14 +1,12 @@
 #!/bin/sh
 
-# Function to check for Banana Pi M2 Zero
 banana_pi_m2_zero() {
     grep -q 'Banana Pi BPI-M2-Zero' /proc/device-tree/model
     return $?
 }
 
-# Function to check for Orange Pi Zero 2 W
 orangepi_zero_2_w() {
-    grep -q 'Orange Pi Zero2' /proc/device-tree/model
+    grep -q 'OrangePi Zero2 W' /proc/device-tree/model
     return $?
 }
 
