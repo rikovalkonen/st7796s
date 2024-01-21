@@ -7,7 +7,8 @@
 	fragment@0 {
 		target = <&spi0>;
 		__overlay__ {
-			num-cs = <1>;
+			//num-cs = <1>;
+			num-chipselects = <1>;
 			cs-gpios = <&pio 2 3 0>; /* C-03  = SPI0_CS*/
 			// cs-gpios = <&pio 2 3 0>, /* C-03  = SPI0_CS*/
 			// 		   <&pio 0 6 0>; /* MAYBE A-13 = SPI1_CS*/
@@ -23,7 +24,7 @@
 				fps = <30>;
 				buswidth = <8>;
 				reset-gpios = <&pio 0 8 1>; /* A-07 */
-				dc-gpios = <&pio 2 5 0>; /* C-04 */
+				dc-gpios = <&pio 1 3 0>; /* C3 */
 				debug = <1>;
 			};
 
