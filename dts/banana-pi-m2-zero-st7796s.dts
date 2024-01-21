@@ -23,7 +23,7 @@
 				rotate = <0>;
 				fps = <30>;
 				buswidth = <8>;
-				reset-gpios = <&pio 0 8 1>; /* A-07 */
+				reset-gpios = <&pio 0 7 1>; /* A-07 */
 				dc-gpios = <&pio 2 4 0>; /* C4 */
 				debug = <1>;
 			};
